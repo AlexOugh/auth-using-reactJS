@@ -8,6 +8,8 @@ const App = ({ children }) => (
       <Link to="/user">User</Link>
       <Link to="/about">About 1</Link>
       <Link to="/about-static">About 2</Link>
+      <Link to="/comments">Comments</Link>
+      <Link to="/aws-token">AWS Token</Link>
     </header>
     <section>
       {children || 'Welcome to the app'}

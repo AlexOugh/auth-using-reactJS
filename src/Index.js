@@ -6,6 +6,9 @@ import PoweredBy from './components/Powered-by';
 import About from './containers/AboutContainer';
 import AboutStatic from './containers/AboutContainerStatic';
 import UserContainer from './containers/UserContainer';
+import CommentListContainer from './containers/CommentListContainer';
+import AwsTokenContainer from './containers/AwsTokenContainer';
+import CallbackContainer from './containers/CallbackContainer';
 
 window.React = React;
 
@@ -16,6 +19,9 @@ render(
       <Route path="/poweredby" component={PoweredBy} />
       <Route path="/user" component={UserContainer} />
       <Route path="/about-static" component={AboutStatic} />
+      <Route path="/comments" component={CommentListContainer} />
+      <Route path="/aws-token" component={AwsTokenContainer} />
+      <Route path="/callback" component={CallbackContainer} />
     </Route>
   </Router>), document.getElementById('content')
 );

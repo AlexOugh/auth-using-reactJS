@@ -9,6 +9,7 @@ import UserContainer from './containers/UserContainer';
 import CommentListContainer from './containers/CommentListContainer';
 import AwsTokenContainer from './containers/AwsTokenContainer';
 import CallbackContainer from './containers/CallbackContainer';
+import GoogleAuthContainer from './containers/GoogleAuthContainer';
 
 window.React = React;
 
@@ -22,6 +23,7 @@ render(
       <Route path="/comments" component={CommentListContainer} />
       <Route path="/aws-token" component={AwsTokenContainer} />
       <Route path="/callback" component={CallbackContainer} />
+      <Route path="/google" component={GoogleAuthContainer} />
     </Route>
   </Router>), document.getElementById('content')
 );

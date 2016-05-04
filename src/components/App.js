@@ -10,6 +10,7 @@ const App = ({ children }) => (
       <Link to="/about-static">About 2</Link>
       <Link to="/comments">Comments</Link>
       <Link to="/aws-token">AWS Token</Link>
+      <Link to="/google">Google Auth</Link>
     </header>
     <section>
       {children || 'Welcome to the app'}

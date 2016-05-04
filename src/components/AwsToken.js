@@ -8,6 +8,7 @@ const AwsToken = ({ account, role, tokens, changeHandler, submitHandler }) => (
     <div className="module_header">
       <span>Get AWS Temporary Tokens</span>
     </div>
+    <br/>
 
     <span className="error" style={{ display: 'none' }}></span>
 
@@ -19,6 +20,7 @@ const AwsToken = ({ account, role, tokens, changeHandler, submitHandler }) => (
         </div>
         <input name="account" value={ account } onChange={ changeHandler } />
       </div>
+      <br/>
 
       <div>
         <div>
@@ -26,14 +28,18 @@ const AwsToken = ({ account, role, tokens, changeHandler, submitHandler }) => (
         </div>
         <input name="role" value={ role } onChange={ changeHandler } />
       </div>
+      <br/>
 
       <div className="start">
         <button className="small" onClick={ submitHandler }>submit</button>
       </div>
+      <br/>
 
-      <div id="tokens" className="start" style={{ display: 'none' }}>
+      <div id="tokens" className="start">
         <div><label htmlFor="tokens">Tokens</label></div>
-        <div className="aruba_panel" style={{ overflow: 'auto' }} id="content">{ tokens }</div>
+        <div style={{ overflow: 'auto' }} id="content">
+          <textarea rows={10} cols={120} value={ tokens }/>
+        </div>
       </div>
     </div>
 

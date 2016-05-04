@@ -60,9 +60,19 @@ class AwsTokenContainer extends React.Component {
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });*/
+    const self = this;
     const url = apiUrl + '/aws-token';
     const method = 'POST';
-    API.send_request(url, method, params);
+    API.send_request(url, method, params).
+    then(function(data) {
+      const tokenStr = "export AWS_ACCESS_KEY_ID=" + data.AccessKeyId + "\n"
+        + "export AWS_SECRET_ACCESS_KEY=" + data.SecretAccessKey + "\n"
+        + "export AWS_SESSION_TOKEN=" + data.SessionToken;
+      self.setState({tokens: tokenStr});
+    })
+    .catch(function(err) {
+      alert(err);
+    });
     // this.setState({account: '', role: ''});
   }
 

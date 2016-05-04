@@ -1,11 +1,6 @@
 'use strict';
-import GLOBAL from './global';
 
 var Api = {
-
-  store_access_token: function(access_token) {
-    GLOBAL.ACCESS_TOKEN = access_token;
-  },
 
   send_request: function (url, method, data) {
     const self = this;
@@ -15,13 +10,13 @@ var Api = {
     return new Promise(function (resolve, reject) {
       var request = new XMLHttpRequest();
       request.open(method || 'GET', url);
-      if (GLOBAL.ACCESS_TOKEN) {
-        request.setRequestHeader('Authorization', 'Bearer ' + GLOBAL.ACCESS_TOKEN);
+      request.setRequestHeader('Content-Type', 'application/json');
+      const access_token = sessionStorage.getItem('access_token');
+      if (access_token) {
+        request.setRequestHeader('Authorization', 'Bearer ' + access_token);
       }
       else {
-        const apiUrl = 'https://3zupc84zw0.execute-api.us-east-1.amazonaws.com/dev';
-        const authLoginUrl = 'http://qa-sungard.sso.sungardas.io/service/oauth2/authorize?realm=SungardAS&scope=openid+profile+email+address+phone+cloud&redirect_uri=' + apiUrl + '/callback' + '&response_type=code&client_id=msaws';
-        window.location = authLoginUrl;
+        self.redirect_to_login();
         return;
       }
       request.onload = function () {
@@ -38,6 +33,11 @@ var Api = {
         }
       };
       request.onerror = function () {
+        alert(request.status);
+        if (request.status == 0) {
+          self.redirect_to_login();
+          return;
+        }
         reject(request.status);
       };
       if (data) {
@@ -47,5 +47,14 @@ var Api = {
       }
     });
   },
+
+  redirect_to_login: function () {
+    const apiUrl = 'https://3zupc84zw0.execute-api.us-east-1.amazonaws.com/dev';
+    const callbackUrl = 'http://localhost:3000/#callback';
+    const authLoginUrl = 'http://qa-sungard.sso.sungardas.io/service/oauth2/authorize?realm=SungardAS&scope=openid+profile+email+address+phone+cloud&redirect_uri=' + apiUrl + '/callback' + '&response_type=code&client_id=msaws';
+    //const authLoginUrl = 'http://qa-sungard.sso.sungardas.io/service/oauth2/authorize?realm=SungardAS&scope=openid+profile+email+address+phone+cloud&redirect_uri=' + apiUrl + '/callback-reactjs' + '&response_type=code&client_id=msaws';
+    //const authLoginUrl = 'http://qa-sungard.sso.sungardas.io/service/oauth2/authorize?realm=SungardAS&scope=openid+profile+email+address+phone+cloud&redirect_uri=' + callbackUrl + '&response_type=code&client_id=msaws';
+    window.location = authLoginUrl;
+  }
 };
 export default Api;

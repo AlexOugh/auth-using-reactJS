@@ -5,8 +5,10 @@ import App from './components/App';
 import PoweredBy from './components/Powered-by';
 import About from './containers/AboutContainer';
 import AboutStatic from './containers/AboutContainerStatic';
-import UserContainer from './containers/UserContainer';
+import UserListContainer from './containers/UserListContainer';
+import PermissionListContainer from './containers/PermissionListContainer';
 import CommentListContainer from './containers/CommentListContainer';
+import AccountListContainer from './containers/AccountListContainer';
 import AwsTokenContainer from './containers/AwsTokenContainer';
 import CallbackContainer from './containers/CallbackContainer';
 import GoogleAuthContainer from './containers/GoogleAuthContainer';
@@ -18,9 +20,11 @@ render(
     <Route path="/" component={App}>
       <Route path="/about" component={About} />
       <Route path="/poweredby" component={PoweredBy} />
-      <Route path="/user" component={UserContainer} />
+      <Route path="/users" component={UserListContainer} />
+      <Route path="/permissions" component={PermissionListContainer} />
       <Route path="/about-static" component={AboutStatic} />
       <Route path="/comments" component={CommentListContainer} />
+      <Route path="/accounts" component={AccountListContainer} />
       <Route path="/aws-token" component={AwsTokenContainer} />
       <Route path="/callback" component={CallbackContainer} />
       <Route path="/google" component={GoogleAuthContainer} />

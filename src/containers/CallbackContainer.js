@@ -9,9 +9,16 @@ class CallbackContainer extends React.Component {
 
   componentDidMount() {
     const access_token = this.props.location.query.access_token;
+    alert(access_token);
     sessionStorage.setItem('access_token', access_token);
 
-    window.location = '/';
+    //alert(sessionStorage.getItem('last_url'));
+    if (sessionStorage.getItem('last_url')) {
+      window.location = sessionStorage.getItem('last_url');
+    }
+    else {
+      window.location = '/';
+    }
   }
 
   render() {

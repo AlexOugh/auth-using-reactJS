@@ -26,7 +26,8 @@ class UserListContainer extends React.Component {
 
   componentDidMount() {
     const self = this;
-    const apiUrl = 'https://33r5i5nr2l.execute-api.us-east-1.amazonaws.com/proto';
+    //const apiUrl = 'https://33r5i5nr2l.execute-api.us-east-1.amazonaws.com/proto';
+    const apiUrl = "https://nlk7dcxhy2.execute-api.us-east-1.amazonaws.com/mysql";
     const url = apiUrl + '/users';
     const method = 'GET';
     const params = {};

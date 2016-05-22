@@ -4,10 +4,11 @@ import { Link } from 'react-router';
 const App = ({ children }) => (
   <div>
     <header>
-      <h1>App Title</h1>
+      <h1>PERMgmt</h1>
       <Link to="/users">Users</Link>
-      <Link to="/permissions">Permissions</Link>
       <Link to="/accounts">Accounts</Link>
+      <Link to="/permissions">Permissions By Users</Link>
+      <Link to="/role-permissions">Permissions By Roles</Link>
       <Link to="/aws-token">AWS Token</Link>
       <Link to="/google">Google Auth</Link>
     </header>

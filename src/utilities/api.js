@@ -54,6 +54,7 @@ var Api = {
 
   redirect_to_login: function () {
     const apiUrl = 'https://3zupc84zw0.execute-api.us-east-1.amazonaws.com/dev';
+    //const apiUrl = "https://nlk7dcxhy2.execute-api.us-east-1.amazonaws.com/mysql";
     const authLoginUrl = 'http://qa-sungard.sso.sungardas.io/service/oauth2/authorize?realm=SungardAS&scope=openid+profile+email+address+phone+cloud&redirect_uri=' + apiUrl + '/callback' + '&response_type=code&client_id=msaws';
     //const authLoginUrl = 'http://qa-sungard.sso.sungardas.io/service/oauth2/authorize?realm=SungardAS&scope=openid+profile+email+address+phone+cloud&redirect_uri=' + apiUrl + '/callback-ractjs' + '&response_type=code&client_id=msaws';
     //const callbackUrl = 'http://localhost:3000/callback';
